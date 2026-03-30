@@ -1,23 +1,346 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+  <!-- Schema.org LocalBusiness 마크업(JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "포터2 리스 전문 비교 플랫폼",
+    "image": "https://도메인/로고.png",
+    "url": "https://도메인/porter2-lease",
+    "telephone": "031-123-4567",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "경기도 평택시 ○○로 ○○",
+      "addressLocality": "평택시",
+      "addressRegion": "경기",
+      "postalCode": "17900",
+      "addressCountry": "KR"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "대한민국"
+    },
+    "priceRange": "₩₩₩",
+    "description": "2026년 포터2 리스 비용, 장점, 단점, 가격 비교 전문 플랫폼. 최적의 리스 견적을 위한 필수 정보와 추천 업체를 한눈에 확인하세요."
+  }
+  </script>
+
+  <style>
+    /* 기본 스타일 재설정 */
+    body { font-family: 'Noto Sans KR', sans-serif; margin:0; padding:0; background:#f0f4f8; color:#333; line-height:1.7; }
+    header, section, footer { max-width:900px; margin:20px auto; padding:25px; background:#ffffff; border-radius:16px; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+
+    /* 헤딩 스타일 (색상 및 계층 구조 강조) */
+    h1, h2, h3 { color:#0b3d91; margin-bottom:15px; }
+    h1 { font-size:2.8rem; text-align:center; line-height:1.4; margin-bottom:10px; color:#1a2b5e; }
+    h2 { font-size:2.2rem; border-bottom:3px solid #a3c4ff; padding-bottom:10px; color:#0b3d91; }
+    h3 { font-size:1.6rem; margin-top:20px; color:#3a5a8a; }
+
+    /* 텍스트 스타일 */
+    p, li, dd { font-size:1.05rem; line-height:1.8; color:#444; }
+    ul, ol { padding-left:25px; margin-bottom:20px; }
+    li { margin-bottom:8px; }
+    strong { color:#0b3d91; font-weight:700; }
+
+    /* 테이블 스타일 */
+    table { width:100%; border-collapse: collapse; margin:25px 0; font-size:1rem; }
+    th, td { border:1px solid #ccddee; padding:15px; text-align:left; }
+    th { background:#e1f0ff; color:#0b3d91; font-weight:700; }
+    td { background:#ffffff; }
+
+    /* CTA 버튼 스타일 */
+    .btn-cta {
+      display:inline-block;
+      padding:16px 35px;
+      background:#4285f4;
+      color:#fff;
+      font-weight:700;
+      border:none;
+      border-radius:30px;
+      box-shadow:0 6px 12px rgba(66, 133, 244, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor:pointer;
+      text-decoration:none;
+      text-align:center;
+      font-size:1.1rem;
+    }
+    .btn-cta:hover { background:#3367d6; transform:translateY(-2px); }
+
+    /* 네비게이션 스타일 */
+    nav { max-width:900px; margin:0 auto; padding:15px; background:#ffffff; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.05); }
+    nav ul { list-style:none; padding:0; display:flex; flex-wrap:wrap; justify-content:space-between; margin:0; }
+    nav li { margin:5px 10px; flex-grow:1; text-align:center; }
+    nav a { display:block; padding:10px 15px; color:#0b3d91; font-weight:600; text-decoration:none; border-radius:8px; background:#f0f4f8; transition:background 0.3s; }
+    nav a:hover { background:#a3c4ff; color:#fff; }
+
+    /* 앵커 (스크롤 보정) */
+    .anchor { display:block; position:relative; top:-80px; visibility:hidden; }
+
+    /* 이미지 스타일 */
+    img { max-width:100%; height:auto; border-radius:10px; margin-top:15px; }
+
+    /* FAQ 스타일 */
+    dl dt { font-weight:700; font-size:1.1rem; color:#0b3d91; margin-top:20px; }
+    dl dd { padding-left:15px; border-left:3px solid #a3c4ff; margin-bottom:15px; }
+
+    /* 추가 레이아웃 요소 */
+    .highlight-box { background:#f9f9e0; padding:20px; border-radius:10px; border:1px solid #e0e0c0; margin-top:20px; }
+    .note { font-size:0.9rem; color:#777; margin-top:10px; padding-left:15px; }
+
+    /* 반응형 디자인 */
+    @media(max-width:600px) {
+      body { padding:10px; }
+      header, section, footer { margin:10px auto; padding:15px; }
+      h1 { font-size:2rem; }
+      h2 { font-size:1.6rem; }
+      h3 { font-size:1.3rem; }
+      nav ul { flex-direction:column; }
+      nav li { margin:5px 0; }
+      .btn-cta { width:100%; padding:15px 0; }
+      th, td { padding:10px; font-size:0.9rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>포터2 리스 2026년 완벽 분석</h1>
+    <p>포터2 리스 비용, 장점, 단점, 견적 비교 및 추천 업체 순위까지 한눈에!</p>
+    <a class="btn-cta" href="#contact">지금 포터2 리스 견적 받기</a>
+    <img src="https://images.pexels.com/photos/10819114/pexels-photo-10819114.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="포터2 차량 이미지">
+  </header>
+
+  <nav aria-label="페이지 내 이동">
+    <ul>
+      <li><a href="#intro">포터2 리스란?</a></li>
+      <li><a href="#pricing">비용 & 가격 분석</a></li>
+      <li><a href="#pros-cons">장점 & 단점 비교</a></li>
+      <li><a href="#comparison">리스 vs 할부</a></li>
+      <li><a href="#recommend">추천 업체 및 체크리스트</a></li>
+      <li><a href="#review">실제 후기 및 FAQ</a></li>
+      <li><a href="#contact">견적 상담</a></li>
+    </ul>
+  </nav>
+
+  <section id="intro">
+    <span id="intro-anchor" class="anchor"></span>
+    <h2>포터2 리스: 왜 지금 선택해야 하는가? (2026년 전망 포함)</h2>
+    <p>포터2는 대한민국 소상공인과 자영업자의 상징적인 차량입니다. 특히 최근 몇 년간 전기차 모델의 출시와 함께 차량 구매 방식에 대한 고민이 깊어지고 있습니다. 과거에는 일시불이나 할부 구매가 주를 이루었으나, 2026년 현재는 <strong>포터2 리스</strong>가 새로운 대안으로 급부상하고 있습니다. 리스는 차량을 직접 구매하지 않고 일정 기간 동안 빌려 타는 방식으로, 초기 비용 부담이 적고 세금 및 보험료 절감 효과가 뚜렷합니다. 이 글에서는 2026년 최신 기준으로 포터2 리스에 대한 모든 것을 자세히 분석하고, 내돈내산 후기와 함께 최적의 업체를 추천해 드립니다.</p>
+    <p class="highlight-box"><strong>중요 키워드:</strong> 2026년 포터2 시장은 전기차 전환이 가속화되며 리스 수요가 더욱 증가할 것으로 전망됩니다. 특히 '화물차 운송사업 허가제' 등 정부 정책 변화에 따라 초기 비용을 줄이고 운용 효율을 높이는 리스 방식의 장점이 더욱 부각되고 있습니다. 본 가이드는 리스 <strong>견적</strong>을 고민하는 분들이 <strong>비용</strong>과 <strong>장단점</strong>을 명확히 이해할 수 있도록 구성되었습니다.</p>
+  </section>
+
+  <section id="pricing">
+    <span id="pricing-anchor" class="anchor"></span>
+    <h2>포터2 리스 비용 분석: 얼마가 적절할까? (2026년 예상 가격)</h2>
+    <p>포터2 리스의 <strong>예상 비용</strong>은 차량 모델(내연기관/전기차), 계약 기간, 주행거리, 보증금/잔존가치 설정 등 다양한 요소에 따라 크게 달라집니다. 특히 <strong>포터2 전기차 리스</strong>의 경우 보조금 정책에 따라 <strong>가격</strong> 변동성이 크므로, 꼼꼼한 <strong>비교</strong>가 필요합니다. 2026년 기준으로 <strong>평균 리스 비용</strong>을 산출할 때 고려해야 할 핵심 요소들을 살펴봅니다.</p>
+
+    <h3>1. 포터2 리스 예상 견적 테이블 (2026년 기준)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>차량 모델 (내연기관)</th>
+          <th>차량 모델 (전기차)</th>
+          <th>비고</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>차량 가격 (신차)</td>
+          <td>약 2,500만 원 (일반 모델 기준)</td>
+          <td>약 4,500만 원 (프리미엄 모델 기준)</td>
+          <td>보조금 적용 전 가격</td>
+        </tr>
+        <tr>
+          <td>월 리스료 (48개월 기준)</td>
+          <td><strong>₩450,000 ~ ₩600,000</strong></td>
+          <td><strong>₩300,000 ~ ₩450,000</strong></td>
+          <td>보증금 30% 조건, 보조금 변동에 따라 상이</td>
+        </tr>
+        <tr>
+          <td>잔존가치 설정</td>
+          <td>20% ~ 40% (선택 가능)</td>
+          <td>20% ~ 40% (선택 가능)</td>
+          <td>만기 시 차량 인수 비용에 영향</td>
+        </tr>
+        <tr>
+          <td>추가 비용 항목</td>
+          <td colspan="2">자동차세, 보험료, 취득세, 등록비 포함 여부 확인</td>
+          <td>리스 상품별로 상이</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">※ 위 <strong>금액</strong>은 2026년 기준으로 예상되는 <strong>평균</strong>적인 <strong>견적</strong>이며, 개인의 신용도 및 업체별 <strong>할인</strong> 프로모션에 따라 실제 <strong>가격</strong>은 달라질 수 있습니다. 특히 <strong>저렴한곳</strong>을 찾기 위해선 여러 업체의 <strong>비교</strong>가 필수적입니다.</p>
+
+    <h3>2. 리스 비용 결정 요소 심층 분석</h3>
+    <ul>
+      <li><strong>주행거리 (연간 약정):</strong> 연간 약정 주행거리를 1만 km, 2만 km 등으로 설정합니다. 주행거리가 길수록 리스료는 올라갑니다. <strong>포터2 리스</strong>의 경우 업무용으로 사용하는 경우가 많아, 실제 운행량에 맞는 정확한 예측이 중요합니다.</li>
+      <li><strong>보증금/선납금:</strong> 초기 납입하는 <strong>보증금</strong>이나 <strong>선납금</strong>은 월 리스료를 낮추는 효과가 있습니다. 다만 <strong>보증금</strong>은 만기 시 환급받는 금액이고 <strong>선납금</strong>은 소멸하는 금액이므로, 현금 유동성을 고려하여 <strong>장단점</strong>을 파악해야 합니다.</li>
+      <li><strong>잔존가치:</strong> 리스 계약 만료 시점의 차량 가치를 미리 정하는 것입니다. 잔존가치가 높을수록 월 납입금은 낮아지지만, 만기 시 인수 비용은 높아집니다. <strong>포터2 리스</strong>의 경우 감가상각이 적어 잔존가치를 높게 설정하는 것이 유리할 때가 많습니다.</li>
+    </ul>
+
+    <h3>3. 전기차 보조금과 리스 비용의 관계 (2026년)</h3>
+    <p>포터2 전기차 리스는 정부 보조금에 크게 의존합니다. 2026년에는 보조금 규모가 점진적으로 축소되거나, 보조금 지급 조건(예: 주행거리, 배터리 효율)이 강화될 수 있습니다. <strong>신규 가입</strong>자는 보조금 <strong>혜택</strong>을 최대로 받기 위해 계약 시점의 정부 정책을 꼼꼼히 확인해야 합니다. <strong>리스 업체</strong> 중에는 보조금을 선지급하거나 <strong>현금지원</strong> 프로모션을 제공하는 곳도 있으니 <strong>비교</strong>하여 선택하는 것이 좋습니다.</p>
+  </section>
+
+  <section id="pros-cons">
+    <span id="pros-cons-anchor" class="anchor"></span>
+    <h2>포터2 리스 장점 & 단점: 내게 맞는 선택일까?</h2>
+    <p>포터2 리스를 선택하기 전, 개인사업자나 법인사업자 입장에서의 <strong>장점</strong>과 <strong>단점</strong>을 명확히 이해해야 합니다. 리스는 단순히 차량을 빌려 타는 것을 넘어, 회계 처리와 세금 납부에 직접적인 영향을 미치는 금융 상품입니다.</p>
+
+    <h3>1. 포터2 리스의 주요 장점 (세금 및 회계 처리)</h3>
+    <ol>
+      <li><strong>비용 처리의 용이성:</strong> 월 리스료 전액을 사업상 경비로 처리할 수 있어, 종합소득세나 법인세 절감 효과가 있습니다. 특히 <strong>포터2 리스</strong>는 업무용 차량으로 100% 활용되므로 비용 인정 한도 내에서 최대한의 <strong>혜택</strong>을 누릴 수 있습니다.</li>
+      <li><strong>초기 비용 부담 감소:</strong> 차량 구매 시 필요한 취득세, 등록세, 공채 등 초기 <strong>금액</strong> 지출이 발생하지 않습니다. 보증금 없는 리스 상품을 이용할 경우 초기 자금 지출이 거의 없으므로 현금 유동성을 확보하는 데 유리합니다.</li>
+      <li><strong>보험 및 정비 통합 관리:</strong> 리스 상품에는 자동차 보험료와 정비 서비스가 포함된 경우가 많습니다. 특히 <strong>포터2 리스</strong>는 주행거리가 길고 정비 수요가 잦으므로, 통합 관리 서비스를 이용하면 번거로움을 줄일 수 있습니다.</li>
+      <li><strong>회계 처리의 간소화:</strong> 매월 일정한 리스료만 납부하면 되므로 회계 처리 과정이 단순합니다.</li>
+    </ol>
+
+    <h3>2. 포터2 리스의 단점 (운용상의 제약)</h3>
+    <ol>
+      <li><strong>주행거리 제한:</strong> 계약 시 약정한 연간 주행거리를 초과할 경우, 만기 시 추가 요금을 지불해야 합니다. <strong>포터2 리스</strong>는 업무 특성상 주행거리가 많을 수 있으므로 계약 전 신중한 주행거리 예측이 필요합니다.</li>
+      <li><strong>중도 해지 위약금:</strong> 계약 기간 만료 전에 리스를 해지할 경우, 위약금이 발생합니다. 이 위약금은 차량 잔여 가치와 남은 기간 리스료를 기준으로 산정되며, <strong>가격</strong> 부담이 클 수 있습니다.</li>
+      <li><strong>차량 소유권 부재:</strong> 리스는 렌탈과 유사하게 차량 소유권이 리스 회사에 있습니다. 따라서 차량 번호판이 일반 번호판이 아닌 '허' '하' '호' 등의 번호판으로 등록될 수 있습니다. (※ 포터2는 렌터카가 흔하지 않으므로 일반 번호판이 적용될 가능성이 높으나, 리스 상품에 따라 다름)</li>
+      <li><strong>보증금 환급 시점:</strong> 만기 시 보증금을 돌려받는 구조입니다. 차량을 <strong>인수</strong>하지 않고 반납할 경우 보증금이 돌아오지만, 그 시점까지는 현금이 묶여있는 상태입니다.</li>
+    </ol>
+  </section>
+
+  <section id="comparison">
+    <span id="comparison-anchor" class="anchor"></span>
+    <h2>포터2 리스 vs 할부: 완벽한 차이점 비교 (장단점 분석)</h2>
+    <p>포터2 구매 시 리스와 할부 중 어느 쪽이 더 합리적인 선택인지 판단하는 것이 중요합니다. 특히 <strong>포터2 리스</strong>는 개인사업자에게 유리하다고 알려져 있지만, 자세한 <strong>비교</strong>를 통해 본인의 상황에 맞는 최적의 방법을 찾아야 합니다.</p>
+
+    <h3>1. 리스와 할부의 핵심 차이점 테이블</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>포터2 리스</th>
+          <th>포터2 할부 구매</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>차량 소유권</td>
+          <td>리스 회사 (만기 시 선택)</td>
+          <td>구매자</td>
+        </tr>
+        <tr>
+          <td>초기 비용</td>
+          <td>취득세, 등록세 없음. 보증금/선납금 선택 가능.</td>
+          <td>취득세, 등록세, 보험료 등 초기 목돈 필요.</td>
+        </tr>
+        <tr>
+          <td>세금 혜택</td>
+          <td>월 리스료 전액 비용 처리 (손비 인정)</td>
+          <td>이자 비용만 비용 처리 (감가상각비 적용)</td>
+        </tr>
+        <tr>
+          <td>보험료</td>
+          <td>리스료에 포함되거나 별도 가입 (리스사 요율 적용)</td>
+          <td>구매자 직접 가입 (개인 요율 적용)</td>
+        </tr>
+        <tr>
+          <td>만기 처리</td>
+          <td>인수, 반납, 재리스 선택</td>
+          <td>소유권 이전 (할부 종료)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2. 리스와 할부의 <strong>장단점</strong> 심층 분석</h3>
+    <p><strong>할부 구매</strong>는 차량 소유권이 구매자에게 있기 때문에 차량 개조나 튜닝에 자유롭습니다. 주행거리 제한도 없습니다. 그러나 사업자가 아닌 일반인이거나, 현금 유동성이 부족한 경우에는 초기 비용 부담이 큽니다. 반면, <strong>포터2 리스</strong>는 초기 비용 부담을 줄여 자금을 운용할 수 있다는 <strong>장점</strong>이 있습니다.</p>
+    <p><strong>내돈내산 후기</strong>를 살펴보면, 사업자들은 세금 절감 효과 때문에 리스를 선호하는 경향이 있습니다. 특히 <strong>리스 견적</strong>을 비교할 때 단순히 월 납입금이 낮은 곳만 선택하지 않고, 총 <strong>금액</strong>과 <strong>잔존가치</strong>를 종합적으로 고려해야 합니다. 포터2는 감가상각이 적어 만기 시 인수 가치가 높은 편이므로, 인수 후 중고차 판매를 염두에 둔다면 리스가 더욱 유리할 수 있습니다.</p>
+  </section>
+
+  <section id="recommend">
+    <span id="recommend-anchor" class="anchor"></span>
+    <h2>포터2 리스 추천 업체 비교 및 체크리스트</h2>
+    <p><strong>포터2 리스</strong>를 결정했다면, 어떤 <strong>업체</strong>를 선택해야 할까요? <strong>저렴한곳</strong>, <strong>싼곳</strong>을 찾는 것도 중요하지만, 계약 조건의 투명성, 만기 시 처리, 정비 서비스의 질 등 다양한 요소를 종합적으로 <strong>비교</strong>해야 합니다. 대형 캐피탈사부터 소규모 중개 플랫폼까지 다양한 <strong>전문 업체</strong>가 있으므로, <strong>순위</strong>나 <strong>추천</strong>을 맹신하기보다 자신에게 맞는 조건을 찾는 것이 중요합니다.</p>
+
+    <h3>1. 리스 업체 선택 전 필수 체크리스트</h3>
+    <ol>
+      <li><strong>초기 비용 및 보증금 조건 확인:</strong> 보증금 없는 리스를 선호하는 경우, 월 리스료가 비싸지는 대신 초기 비용을 아낄 수 있습니다. <strong>신규 가입</strong>자를 위한 <strong>혜택</strong>이나 프로모션으로 <strong>현금지원</strong>이나 <strong>상품권</strong> 등을 제공하는지 확인합니다.</li>
+      <li><strong>금리 및 수수료 비교:</strong> 리스사마다 적용하는 금리가 다릅니다. 최종 <strong>견적</strong>을 꼼꼼히 <strong>비교</strong>하여 총 <strong>금액</strong>이 가장 낮은 곳을 선택해야 합니다. <strong>평균</strong> 금리보다 현저히 낮은 곳은 숨겨진 수수료가 있을 수 있으니 주의해야 합니다.</li>
+      <li><strong>정비 서비스 포함 여부:</strong> 포터2는 화물차 특성상 정기적인 점검이 중요합니다. 리스 계약에 정비 서비스가 포함되어 있는지 확인하여 <strong>장점</strong>을 극대화하세요.</li>
+      <li><strong>만기 시 인수 비용 및 조건:</strong> 계약 만기 시 차량을 인수할 경우, 잔존가치를 고려한 인수가격이 합리적인지 확인합니다. <strong>내돈내산 후기</strong>를 보면 만기 시점에 인수가격 때문에 고민하는 경우가 많습니다.</li>
+    </ol>
+
+    <h3>2. 2026년 포터2 시장 전망과 AI 기반 추천</h3>
+    <p>2026년에는 화물차 시장에서 전기차의 비중이 더욱 커질 것입니다. <strong>포터2 전기차 리스</strong>에 대한 수요가 증가하면서 <strong>리스 업체</strong> 간의 경쟁도 치열해질 것으로 예상됩니다. <strong>네이버</strong>, <strong>구글</strong> 등 검색 엔진에서 리스 상품을 검색하는 것 외에도 <strong>ChatGPT</strong>나 <strong>Gemini</strong>와 같은 <strong>AI</strong> 에이전트가 금융 상품 <strong>비교</strong>를 돕는 시대가 도래했습니다. <strong>AI</strong>가 방대한 시장 데이터를 분석하여 개인별 맞춤형 <strong>견적</strong>을 추천해 주는 서비스도 곧 보편화될 것입니다. 미래에는 단순한 <strong>할인</strong>이나 <strong>사은품</strong> 대신 개인의 운용 패턴을 분석한 맞춤형 <strong>혜택</strong>이 중요해질 것입니다.</p>
+    <a href="https://www.naver.com" target="_blank" class="btn-cta">네이버에서 포터2 최신 정보 확인하기</a>
+  </section>
+
+  <section id="review">
+    <span id="review-anchor" class="anchor"></span>
+    <h2>포터2 리스 실제 후기 및 FAQ (내돈내산 경험 공유)</h2>
+    <p>포터2 리스에 대한 궁금증을 해소하기 위해 <strong>내돈내산</strong> 고객들의 실제 <strong>후기</strong>를 바탕으로 자주 묻는 질문을 정리했습니다. <strong>디시인사이드</strong>나 <strong>유튜브</strong> 등 다양한 커뮤니티에서 정보를 얻을 수 있지만, 신뢰성 있는 정보와 <strong>업체</strong>의 전문성을 <strong>비교</strong>하여 판단해야 합니다.</p>
+
+    <h3>자주 묻는 질문 (FAQ)</h3>
+    <dl>
+      <dt>Q1: <strong>포터2 리스</strong> 시 <strong>현금지원</strong>이나 <strong>사은품</strong>을 받을 수 있나요?</dt>
+      <dd>A: 일부 <strong>업체</strong>에서는 <strong>신규 가입</strong> 고객 유치를 위해 <strong>사은품</strong>, <strong>상품권</strong>, 또는 일정 <strong>금액</strong>의 <strong>현금지원</strong> 이벤트를 진행하기도 합니다. 하지만 <strong>할인</strong> <strong>혜택</strong>이 월 리스료에 녹아드는 경우가 많으니 총 <strong>비용</strong>을 <strong>비교</strong>하는 것이 중요합니다.</dd>
+
+      <dt>Q2: <strong>포터2 리스</strong>는 <strong>할부</strong>보다 무조건 <strong>저렴한곳</strong>인가요?</dt>
+      <dd>A: 총 <strong>금액</strong>만 놓고 보면 할부 구매가 더 저렴할 수 있습니다. 하지만 초기 비용 절감, 세금 혜택 등 사업자에게 주어지는 <strong>장점</strong>을 고려하면 리스가 운용 비용 면에서 <strong>장단점</strong>이 있습니다. <strong>견적</strong> 시 발생하는 이자율과 수수료를 꼼꼼히 <strong>비교</strong>해 보세요.</dd>
+
+      <dt>Q3: <strong>포터2 전기차 리스</strong>를 선택해야 할까요?</dt>
+      <dd>A: 주행거리가 길고 유가에 민감하다면 <strong>포터2 전기차 리스</strong>가 <strong>장점</strong>이 많습니다. 2026년에는 전기차 보조금 정책이 변화할 수 있으므로, 최신 정보를 바탕으로 <strong>비교</strong>하는 것이 중요합니다.</dd>
+
+      <dt>Q4: 리스 계약 시 <strong>블랙박스</strong>나 <strong>썬팅</strong>은 <strong>혜택</strong>으로 받을 수 있나요?</dt>
+      <dd>A: 네, 많은 <strong>리스 업체</strong>들이 <strong>신규 가입</strong> 프로모션으로 <strong>블랙박스</strong>, <strong>썬팅</strong>, 하이패스 등을 <strong>사은품</strong>으로 제공합니다. <strong>내돈내산</strong> 고객 <strong>후기</strong>를 통해 어떤 <strong>혜택</strong>을 받을 수 있는지 미리 확인하세요.</dd>
+    </dl>
+  </section>
+
+  <section id="external-links">
+    <h2>관련 정보 외부 사이트</h2>
+    <p>포터2 리스와 관련된 신뢰할 수 있는 정보를 제공하는 외부 사이트 링크입니다.</p>
+    <ul>
+      <li><a href="https://www.hyundai.com/kr/ko/e/truck/porter-ev/e-spec-1" target="_blank">현대자동차 공식 포터2 제원 정보</a> (포터2 신차 정보 확인)</li>
+      <li><a href="https://www.fss.or.kr/" target="_blank">금융감독원 (FSS)</a> (금융 상품 정보 및 소비자 보호 관련)</li>
+      <li><a href="https://www.nts.go.kr/" target="_blank">국세청 (NTS)</a> (사업용 차량 비용 처리 관련 세법 정보)</li>
+      <li><a href="https://namu.wiki/w/%ED%8F%AC%ED%84%B0" target="_blank">나무위키 포터 항목</a> (차량의 역사 및 상세 정보)</li>
+      <li><a href="https://www.carisyou.com/" target="_blank">카이즈유</a> (자동차 시장 데이터 및 <strong>가격</strong> <strong>비교</strong>)</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <span id="contact-anchor" class="anchor"></span>
+    <h2>1:1 포터2 리스 견적 상담 문의</h2>
+    <p>복잡한 <strong>포터2 리스</strong> <strong>가격</strong> <strong>비교</strong>는 전문가에게 맡기세요. 지금 바로 상담을 신청하시면 2026년 최신 기준으로 가장 합리적인 <strong>견적</strong>을 받아보실 수 있습니다. <strong>신규 가입</strong> 고객에게는 특별 <strong>할인</strong> <strong>혜택</strong>을 제공합니다.</p>
+    <form action="/submit" method="POST" style="max-width:600px; margin:auto;">
+      <label for="name">이름<span style="color:red;">*</span></label><br />
+      <input type="text" id="name" name="name" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccddee; border-radius:6px; background:#f9fbfc;" placeholder="홍길동" />
+
+      <label for="phone">연락처<span style="color:red;">*</span></label><br />
+      <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678" pattern="[0-9\-]+" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccddee; border-radius:6px; background:#f9fbfc;" />
+
+      <label for="address">현재 주소지 (시/군/구)<span style="color:red;">*</span></label><br />
+      <input type="text" id="address" name="address" required placeholder="예: 경기도 평택시" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccddee; border-radius:6px; background:#f9fbfc;" />
+
+      <label for="move-type">상담 희망 차량 유형<span style="color:red;">*</span></label><br />
+      <select id="move-type" name="move_type" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccddee; border-radius:6px; background:#f9fbfc;">
+        <option value="">선택하세요</option>
+        <option value="포터2 내연기관">포터2 내연기관 (디젤)</option>
+        <option value="포터2 전기차">포터2 전기차 (EV)</option>
+        <option value="봉고3">봉고3 (경쟁차종)</option>
+      </select>
+
+      <label for="lease-term">희망 리스 기간 (개월)<span style="color:red;">*</span></label><br />
+      <select id="lease-term" name="lease_term" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccddee; border-radius:6px; background:#f9fbfc;">
+        <option value="">선택하세요</option>
+        <option value="36개월">36개월</option>
+        <option value="48개월">48개월</option>
+        <option value="60개월">60개월</option>
+      </select>
+
+      <label for="message">추가 문의 사항 (구체적인 조건, <strong>혜택</strong> 문의 등)</label><br />
+      <textarea id="message" name="message" rows="4" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccddee; border-radius:6px; background:#f9fbfc;" placeholder="예: 보증금 0% 희망, 월 예상 주행거리 등"></textarea>
+
+      <button type="submit" class="btn-cta">견적 문의 보내기</button>
+    </form>
+  </section>
+
+  
